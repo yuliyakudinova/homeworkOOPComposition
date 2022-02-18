@@ -40,7 +40,7 @@ public class PosterManager {
         } else {
             resultLength = limitFilms;
         }
-        Films[] result = new Films[items.length];
+        Films[] result = new Films[resultLength];
         for (int i = 0; i < resultLength; i++) {
             int index = items.length - i - 1;
             result[i] = items[index];

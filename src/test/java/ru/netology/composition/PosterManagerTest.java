@@ -47,7 +47,7 @@ class PosterManagerTest {
         Films nine = new Films("Ninth", 9);
         Films ten = new Films("Tenth", 10);
         Films eleven = new Films("Eleventh", 11);
-        Films twelve = new Films("Twelth", 11);
+        Films twelve = new Films("Twelth", 12);
 
         posman.addNewFilm(one);
         posman.addNewFilm(two);
@@ -64,16 +64,41 @@ class PosterManagerTest {
 
         posman.getLimit();
 
-        Films[] expected = { twelve, eleven, ten, nine, eight, seven, six, five, four, three };
-        Films[] actual = posman.showAll();
+        Films[] expected = {twelve, eleven, ten, nine, eight, seven, six, five, four, three};
+        Films[] actual = posman.getLimit();
         assertArrayEquals(expected, actual);
     }
 
     @Test
-    void shoulChekLimitFilms () {
+    void getLimit2() {
+        PosterManager posman = new PosterManager();
+        Films one = new Films("First", 1);
+        Films two = new Films("Second", 2);
+        Films three = new Films("Third", 3);
+        Films four = new Films("Fourth", 4);
+        Films five = new Films("Fifth", 5);
+
+        posman.addNewFilm(one);
+        posman.addNewFilm(two);
+        posman.addNewFilm(three);
+        posman.addNewFilm(four);
+        posman.addNewFilm(five);
+
+        posman.getLimit();
+
+        Films[] expected = {five, four, three, two, one};
+        Films[] actual = posman.getLimit();
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    void shoulChekLimitFilms() {
         PosterManager posman = new PosterManager(5);
         assertEquals(5, posman.getLimitFilms());
+    }
 
+    @Test
+    void shoulChekLimitFilms2() {
         PosterManager posman1 = new PosterManager();
         assertEquals(10, posman1.getLimitFilms());
 
